@@ -3,7 +3,7 @@ package myProject.kitchen;
 
 import myProject.ConsoleHelper;
 import myProject.Tablet;
-import myProject.event.CookedOrderEventDataRow;
+import myProject.statistic.event.CookedOrderEventDataRow;
 import myProject.statistic.StatisticManager;
 
 import java.util.Observable;

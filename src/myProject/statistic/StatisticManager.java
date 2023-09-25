@@ -2,10 +2,10 @@ package myProject.statistic;
 
 
 
-import myProject.event.CookedOrderEventDataRow;
-import myProject.event.EventDataRow;
-import myProject.event.EventType;
-import myProject.event.VideoSelectedEventDataRow;
+import myProject.statistic.event.CookedOrderEventDataRow;
+import myProject.statistic.event.EventDataRow;
+import myProject.statistic.event.EventType;
+import myProject.statistic.event.VideoSelectedEventDataRow;
 
 import java.util.*;
 import java.util.stream.Collectors;

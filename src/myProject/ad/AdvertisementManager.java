@@ -3,8 +3,8 @@ package myProject.ad;
 
 
 import myProject.ConsoleHelper;
-import myProject.event.EventDataRow;
-import myProject.event.VideoSelectedEventDataRow;
+import myProject.statistic.event.EventDataRow;
+import myProject.statistic.event.VideoSelectedEventDataRow;
 import myProject.statistic.StatisticManager;
 import myProject.statistic.event.NoAvailableVideoEventDataRow;
 
@@ -26,16 +26,15 @@ public class AdvertisementManager {
             StatisticManager.getInstance().register((EventDataRow) new NoAvailableVideoEventDataRow(timeSeconds));
             throw new NoVideoAvailableException();
         }
- List<Advertisement>list=getVideos();//получить из списка доступных рекламных роликов оптимальный
-//register new myProject.statistic myProject.event
+ List<Advertisement>list=getVideos();
         StatisticManager.
                 getInstance().
                 register(new VideoSelectedEventDataRow(list,list.stream()
                         .mapToLong(a->a.getAmountPerOneDisplaying())
                         .sum(),list.stream().mapToInt(ad->ad.getDuration())
-                        .sum()));//register new myProject.event to myProject.statistic manager
+                        .sum()));
 
-        //displaying an myProject.ad videos
+
  for(Advertisement advertisement:list){
      ConsoleHelper.writeMessage((advertisement.getName() + " is displaying... " + advertisement.getAmountPerOneDisplaying() +
              ", " + (1000 * advertisement.getAmountPerOneDisplaying() / advertisement.getDuration())));

@@ -1,21 +1,20 @@
 package myProject.ad;
 
 public class Advertisement {
-    //видео
-    private Object content;
+
+    private Object content;//some advertisement video
 
     private String name;
 
-    //начальная сумма, стоимость рекламы в копейках. Используем long, чтобы избежать проблем с округлением
-    private long initialAmount;
+    private long initialAmount;//initial cost, cost of advertising in kopecks. use long to avoid rounding problems
 
-    //количество оплаченных показов
-    private int hits;
 
-    //продолжительность в секундах
-    private int duration;
+    private int hits; //amount of paid orders
 
-    private long amountPerOneDisplaying;
+
+    private int duration;//duration in seconds
+
+    private long amountPerOneDisplaying;//amount of money per impression in kopecks
 
     public int getHits() {
         return hits;
@@ -44,13 +43,13 @@ public class Advertisement {
     public long getAmountPerOneDisplaying() {
         return amountPerOneDisplaying;
     }
+
     public void revalidate() {
         if (hits == 0) {
             throw new UnsupportedOperationException();
         }
         hits--;
     }
-
 
 
 }

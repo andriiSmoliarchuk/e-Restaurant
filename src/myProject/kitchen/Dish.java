@@ -19,7 +19,7 @@ public enum Dish {
             builder.append(dish.name()+", ");
         }
         if (builder.length() >= 2) {
-            builder.setLength(builder.length() - 2); // Удаляем последние два символа (", ")
+            builder.setLength(builder.length() - 2); // delete last chars (", ")
         }
         return builder.toString().trim();
     }

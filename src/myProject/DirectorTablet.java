@@ -11,8 +11,8 @@ import java.util.stream.Collectors;
 public class DirectorTablet {
     public void printAdvertisementProfit(){
         SimpleDateFormat formatter=new SimpleDateFormat("dd-MMM-yyyy",Locale.ENGLISH);
-        //*rename. get stats with money per days and sort desc of key;
-        Map<Date,Long> adMap= StatisticManager.
+    
+        Map<Date,Long> sortedMapProfitPerDays = StatisticManager.
                 getInstance().
                 getAdvertisementStats().
                 entrySet().
@@ -22,13 +22,13 @@ public class DirectorTablet {
                         LinkedHashMap::new));
 
 
-        for(Map.Entry<Date,Long>entry: adMap.entrySet()){
+        for(Map.Entry<Date,Long>entry: sortedMapProfitPerDays.entrySet()){
             double amount = 1.0 * entry.getValue()/100;
             System.out.println(formatter.format(entry.getKey()) + " - " + String.format(Locale.ENGLISH, "%.2f", amount));
         }
-        double sum=1.0 *adMap.values().stream().mapToDouble(Double::valueOf).sum()/100;
+        double sum=1.0 * sortedMapProfitPerDays.values().stream().mapToDouble(Double::valueOf).sum()/100;
 
-        System.out.println("Total - " + String.format(Locale.ENGLISH, "%.2f", sum));
+       ConsoleHelper.writeMessage("Total - " + String.format(Locale.ENGLISH, "%.2f", sum));
 
     }
     public void printCookWorkloading(){
@@ -43,11 +43,11 @@ public class DirectorTablet {
                         LinkedHashMap::new));
 //просто выводим по дням информацию
          for (Map.Entry<Date,Map<String,Integer>>entry:sortedMap.entrySet()){//перебираем даты
-             System.out.println(format.format(entry.getKey()));
-            for (Map.Entry<String,Integer>namesAndHourses:entry.getValue().entrySet()){// достаем все данные Имя и рабочое время
-                System.out.printf("%s - %d min\n",namesAndHourses.getKey(),namesAndHourses.getValue()/60);
+             ConsoleHelper.writeMessage(format.format(entry.getKey()));
+            for (Map.Entry<String,Integer>employeeWorkingHours:entry.getValue().entrySet()){// достаем все данные Имя и рабочое время
+                ConsoleHelper.writeMessage(String.format("%s - %d min\n",employeeWorkingHours.getKey(),employeeWorkingHours.getValue()/60));
             }
-             System.out.println();
+             ConsoleHelper.writeMessage("\n");
         }
     }
     public void printActiveVideoSet(){
